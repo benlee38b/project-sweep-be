@@ -15,7 +15,7 @@ app.use(express.json());
 app.use("/api", apiRouter);
 
 app.listen(PORT, function () {
-  console.log("Server is running on PORT: " + port);
+  console.log("Server is running on PORT: " + PORT);
 });
 
 module.exports = app;
