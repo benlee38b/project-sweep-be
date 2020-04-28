@@ -13,6 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node server/app.js",
     "setup-dbs": "node db/db_setup.js",
     "seed": "node db/seeds/seed",
     "setup-server": "node server/app.js"

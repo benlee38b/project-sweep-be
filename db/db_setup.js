@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { runSeed } = require("./seeds/seed");
 
-var uri = "mongodb://localhost:27017/supermarket";
+var uri = process.env.MONGODB_URL || "mongodb://localhost:27017/supermarket";
 mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true });
 const connection = mongoose.connection;
 connection.once("open", function () {
