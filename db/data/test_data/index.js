@@ -1,2 +1,2 @@
-exports.productsData = require("./products");
-exports.categoryData = require("./categories");
+exports.productsData = require('./products')
+exports.categoryData = require('./categories')

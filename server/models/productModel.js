@@ -1,10 +1,10 @@
-const ProductSchema = require("../../db/models/products");
+const ProductSchema = require('../../db/models/products')
 
 exports.findProducts = async () => {
-  const data = await ProductSchema.find({}).populate({
-    path: "category",
-    select: "name",
-  });
+    const data = await ProductSchema.find({}).populate({
+        path: 'category',
+        select: 'name',
+    })
 
-  return data;
-};
+    return data
+}

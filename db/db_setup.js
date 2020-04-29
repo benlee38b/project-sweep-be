@@ -1,13 +1,13 @@
-const mongoose = require("mongoose");
-const { runSeed } = require("./seeds/seed");
+const mongoose = require('mongoose')
+const { runSeed } = require('./seeds/seed')
 
-var uri = process.env.MONGODB_URI || "mongodb://localhost:27017/supermarket";
-mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true });
-const connection = mongoose.connection;
-connection.once("open", function () {
-  console.log("MongoDB database connection established successfully");
-});
+var uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/supermarket'
+mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true })
+const connection = mongoose.connection
+connection.once('open', function () {
+    console.log('MongoDB database connection established successfully')
+})
 
-runSeed();
+runSeed()
 
-module.exports = mongoose;
+module.exports = mongoose
