@@ -5,6 +5,7 @@ const Schema = mongoose.Schema
 let CategorySchema = new Schema({
     name: {
         type: String,
+        required: true,
     },
     products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
 })

@@ -1,10 +1,10 @@
-const ProductSchema = require('../models/products')
-const CategorySchema = require('../models/categories')
+const Product = require('../models/products')
+const Category = require('../models/categories')
 const { productsData, categoryData } = require('../data/test_data/index')
 const { makeRefObj } = require('../utils/seedUtils')
 
 const deleteProducts = async () => {
-    await ProductSchema.deleteMany({}, function (err) {
+    await Product.deleteMany({}, function (err) {
         if (err) {
             console.log(err)
         } else {
@@ -14,7 +14,7 @@ const deleteProducts = async () => {
 }
 
 const deleteCategories = async () => {
-    await CategorySchema.deleteMany({}, function (err, result) {
+    await Category.deleteMany({}, function (err, result) {
         if (err) {
             console.log(err)
         } else {
@@ -24,12 +24,12 @@ const deleteCategories = async () => {
 }
 
 const insertCategories = async (categoryData) => {
-    const data = await CategorySchema.insertMany(categoryData)
+    const data = await Category.insertMany(categoryData)
     return data
 }
 
 const insertProducts = async (productData) => {
-    const data = await ProductSchema.insertMany(productData)
+    const data = await Product.insertMany(productData)
 
     return data
 }
