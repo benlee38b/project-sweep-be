@@ -2,7 +2,6 @@ const Product = require('../models/products')
 const Category = require('../models/categories')
 const { productsData, categoryData } = require('../data/test_data/index')
 const { makeRefObj } = require('../utils/seedUtils')
-const connection = require('../db_setup')
 
 const deleteProducts = async () => {
     await Product.deleteMany({}, function (err) {
@@ -54,7 +53,7 @@ exports.runSeed = (/* data? */) => {
         .then(() => insertCategories(categoryData))
         .then((categories) => {
             const newProductData = convertProductData(categories)
-            console.log(newProductData)
+
             return insertProducts(newProductData)
         })
 }

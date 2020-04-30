@@ -1,7 +1,6 @@
 const chai = require('chai')
 const mongoose = require('mongoose')
 const { expect } = require('chai')
-const connection = require('../../db/db_setup')
 const app = require('../app')
 const request = require('supertest')
 const { runSeed } = require('../../db/seeds/seed')
@@ -19,9 +18,7 @@ before(() => {
 
 beforeEach(() => runSeed())
 
-after(() => {
-    mongoose.disconnect().then(console.log).catch(console.log)
-})
+after(() => mongoose.disconnect())
 
 describe('/api', () => {
     describe('/products', () => {
