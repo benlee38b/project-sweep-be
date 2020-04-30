@@ -25,3 +25,13 @@ exports.insertProduct = async (product) => {
 
     return data
 }
+
+exports.updateProduct = async (productChange) => {
+    const data = await Product.findOneAndUpdate(
+        { name: productChange.name },
+        { category: productChange.category },
+        { new: true }
+    )
+
+    return data
+}

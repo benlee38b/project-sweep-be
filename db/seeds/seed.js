@@ -46,15 +46,12 @@ const convertProductData = (result) => {
     return productDataCat
 }
 
-exports.runSeed = () => {
-    deleteProducts().then(() =>
-        deleteCategories().then(() => {
-            insertCategories(categoryData).then((categories) => {
-                const newProductData = convertProductData(categories)
-                insertProducts(newProductData).then((data) =>
-                    console.log('seeded')
-                )
-            })
+exports.runSeed = (/* data? */) => {
+    return deleteProducts()
+        .then(() => deleteCategories())
+        .then(() => insertCategories(categoryData))
+        .then((categories) => {
+            const newProductData = convertProductData(categories)
+            return insertProducts(newProductData)
         })
-    )
 }

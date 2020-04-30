@@ -8,6 +8,4 @@ connection.once('open', function () {
     console.log('MongoDB database connection established successfully')
 })
 
-runSeed()
-module.exports = connection
 module.exports = mongoose
