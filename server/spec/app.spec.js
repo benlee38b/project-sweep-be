@@ -30,6 +30,7 @@ describe('/api', () => {
                 .get('/api/products')
                 .expect(200)
                 .then((res) => {
+                    console.log(res.body.products[0])
                     expect(res.body.products[0]).to.contain.keys(
                         'foodName',
                         'category'
