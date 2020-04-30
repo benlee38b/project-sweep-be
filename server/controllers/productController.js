@@ -16,8 +16,9 @@ exports.postProduct = (req, res, next) => {
     const product = req.body
     console.log(product)
     insertProduct(product)
-        .then((newProduct) => {
-            console.log(newProduct)
+        .then(([newProduct]) => {
+            console.log({ newProduct })
+
             res.status(201).send({ newProduct })
         })
         .catch((err) => {

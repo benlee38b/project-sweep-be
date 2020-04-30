@@ -6,8 +6,10 @@ const app = require('../app')
 const request = require('supertest')
 const { runSeed } = require('../../db/seeds/seed')
 
+let db
+
 before(() => {
-    return mongoose.connect(
+    db = mongoose.connect(
         process.env.MONGODB_URI || 'mongodb://localhost:27017/shop',
         {
             useNewUrlParser: true,
@@ -15,12 +17,13 @@ before(() => {
             useUnifiedTopology: true,
         }
     )
+    return db
 })
 
 beforeEach(() => runSeed())
 
-after(() => {
-    return mongoose.disconnect().then(console.log).catch(console.log)
+after(db, () => {
+    db.disconnect()
 })
 
 describe('/api', () => {
@@ -35,6 +38,20 @@ describe('/api', () => {
                         'category'
                     )
                     expect(res.body.products).to.be.an('array')
+                })
+        })
+        it('GET: 201 - responds with an object of the inserted product', () => {
+            return request(app)
+                .post('/api/products')
+                .send({ name: 'stilton', category: '5eaab5549540fd57898921c3' })
+                .expect(201)
+                .then((res) => {
+                    expect(res.body.newProduct).to.contain.keys(
+                        '_id',
+                        'name',
+                        'category'
+                    )
+                    expect(res.body.newProduct.name).to.equal('stilton')
                 })
         })
     })
