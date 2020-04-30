@@ -52,6 +52,7 @@ exports.runSeed = (/* data? */) => {
         .then(() => insertCategories(categoryData))
         .then((categories) => {
             const newProductData = convertProductData(categories)
+            // console.log(newProductData)
             return insertProducts(newProductData)
         })
 }

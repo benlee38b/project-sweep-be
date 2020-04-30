@@ -6,10 +6,8 @@ const app = require('../app')
 const request = require('supertest')
 const { runSeed } = require('../../db/seeds/seed')
 
-let db
-
 before(() => {
-    db = mongoose.connect(
+    return mongoose.connect(
         process.env.MONGODB_URI || 'mongodb://localhost:27017/shop',
         {
             useNewUrlParser: true,
@@ -17,13 +15,12 @@ before(() => {
             useUnifiedTopology: true,
         }
     )
-    return db
 })
 
 beforeEach(() => runSeed())
 
-after(db, () => {
-    db.disconnect()
+after(() => {
+    mongoose.disconnect().then(console.log).catch(console.log)
 })
 
 describe('/api', () => {
@@ -34,7 +31,7 @@ describe('/api', () => {
                 .expect(200)
                 .then((res) => {
                     expect(res.body.products[0]).to.contain.keys(
-                        'name',
+                        'foodName',
                         'category'
                     )
                     expect(res.body.products).to.be.an('array')
@@ -43,15 +40,18 @@ describe('/api', () => {
         it('GET: 201 - responds with an object of the inserted product', () => {
             return request(app)
                 .post('/api/products')
-                .send({ name: 'stilton', category: '5eaab5549540fd57898921c3' })
+                .send({
+                    foodName: 'stilton',
+                    category: '5eaab5549540fd57898921c3',
+                })
                 .expect(201)
                 .then((res) => {
                     expect(res.body.newProduct).to.contain.keys(
                         '_id',
-                        'name',
+                        'foodName',
                         'category'
                     )
-                    expect(res.body.newProduct.name).to.equal('stilton')
+                    expect(res.body.newProduct.foodName).to.equal('stilton')
                 })
         })
     })

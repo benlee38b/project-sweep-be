@@ -11,24 +11,16 @@ exports.findProducts = async () => {
 
 exports.insertProduct = async (product) => {
     const data = await Product.insertMany({
-        name: product.name,
+        foodName: product.foodName,
         category: product.category,
     })
-    // const item = await Product.findOne({ name: 'swiss rolls' })
-    //     .populate({
-    //         path: 'category',
-    //         select: 'name',
-    //     })
-    //     .then((res) => {
-    //         console.log(res)
-    //     })
 
     return data
 }
 
 exports.updateProduct = async (productChange) => {
     const data = await Product.findOneAndUpdate(
-        { name: productChange.name },
+        { foodName: productChange.foodName },
         { category: productChange.category },
         { new: true }
     )
