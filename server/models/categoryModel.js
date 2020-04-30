@@ -1,7 +1,7 @@
-const CategorySchema = require('../../db/models/categories')
+const Category = require('../../db/models/categories')
 
 exports.findCategories = async () => {
-    const data = await CategorySchema.find({}).populate('products')
+    const data = await Category.find({}).populate('products')
 
     return data
 }

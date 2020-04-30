@@ -10,6 +10,7 @@
         "singleQuote": true
     },
     "dependencies": {
+        "body-parser": "^1.19.0",
         "chai": "^4.2.0",
         "cors": "^2.8.5",
         "express": "^4.17.1",
@@ -22,7 +23,7 @@
     "devDependencies": {},
     "scripts": {
         "test": "npm run setup-dbs && mocha spec",
-        "start": "node server/app.js",
+        "start": "node server/app.js && db/db_setup.js ",
         "setup-dbs": "node db/db_setup.js",
         "seed": "node db/seeds/seed",
         "setup-server": "node server/app.js"
