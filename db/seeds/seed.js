@@ -42,7 +42,6 @@ const convertProductData = (result) => {
 
         return newProduct
     })
-    // console.log(productDataCat)
 
     return productDataCat
 }

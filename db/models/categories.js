@@ -7,7 +7,7 @@ let CategorySchema = new Schema({
         type: String,
         required: true,
     },
-    products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
+    // products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
 })
 
 module.exports = mongoose.model('Category', CategorySchema)
