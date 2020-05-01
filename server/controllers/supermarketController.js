@@ -1,6 +1,7 @@
 const {
     findSupermarkets,
     findSupermarketById,
+    insertSupermarket,
 } = require('../models/supermarketModel')
 
 exports.getSupermarkets = (req, res, next) => {
@@ -18,6 +19,17 @@ exports.getSupermarketById = (req, res, next) => {
     findSupermarketById(supermarket_id)
         .then((supermarket) => {
             res.status(200).send({ supermarket })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
+
+exports.postSupermarket = (req, res, next) => {
+    const newSupermarket = req.body
+    insertSupermarket(newSupermarket)
+        .then((addedSupermarket) => {
+            res.status(201).send({ addedSupermarket })
         })
         .catch((err) => {
             console.log(err)
