@@ -22,10 +22,11 @@
     },
     "devDependencies": {},
     "scripts": {
+        "seed:prod": "MONGODB_URI=$(heroku config:get MONGODB_URI) node db/seedConfig",
         "test": "mocha server/spec/app.spec.js",
         "start": "node server/listen.js",
         "setup-dbs": "node db/db_setup.js",
-        "seed": "node db/seeds/seed",
+        "seed": "node db/seedConfig",
         "setup-server": "node server/app.js"
     },
     "repository": {

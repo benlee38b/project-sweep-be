@@ -1,6 +1,11 @@
 const Product = require('../models/products')
 const Category = require('../models/categories')
-const { productsData, categoryData } = require('../data/test_data/index')
+const Supermarket = require('../models/supermarkets')
+const {
+    productsData,
+    categoryData,
+    supermarketData,
+} = require('../data/test_data/index')
 const { makeRefObj } = require('../utils/seedUtils')
 
 const deleteProducts = async () => {
@@ -23,6 +28,16 @@ const deleteCategories = async () => {
     })
 }
 
+const deleteSupermarkets = async () => {
+    await Supermarket.deleteMany({}, function (err, result) {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log('deleted supermarkets')
+        }
+    })
+}
+
 const insertCategories = async (categoryData) => {
     const data = await Category.insertMany(categoryData)
     return data
@@ -30,6 +45,11 @@ const insertCategories = async (categoryData) => {
 
 const insertProducts = async (productData) => {
     const data = await Product.insertMany(productData)
+
+    return data
+}
+const insertSupermarkets = async (supermarketData) => {
+    const data = await Supermarket.insertMany(supermarketData)
 
     return data
 }
@@ -42,7 +62,6 @@ const convertProductData = (result) => {
 
         return newProduct
     })
-    // console.log(productDataCat)
 
     return productDataCat
 }
@@ -50,10 +69,12 @@ const convertProductData = (result) => {
 exports.runSeed = (/* data? */) => {
     return deleteProducts()
         .then(() => deleteCategories())
+        .then(() => deleteSupermarkets())
         .then(() => insertCategories(categoryData))
+        .then(() => insertSupermarkets(supermarketData))
         .then((categories) => {
             const newProductData = convertProductData(categories)
-            console.log(newProductData)
+
             return insertProducts(newProductData)
         })
 }
