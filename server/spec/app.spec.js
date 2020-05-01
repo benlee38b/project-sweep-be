@@ -27,7 +27,6 @@ describe('/api', () => {
                 .get('/api/products')
                 .expect(200)
                 .then((res) => {
-                    console.log(res.body.products[0])
                     expect(res.body.products[0]).to.contain.keys(
                         'foodName',
                         'category'
@@ -35,7 +34,7 @@ describe('/api', () => {
                     expect(res.body.products).to.be.an('array')
                 })
         })
-        it('GET: 201 - responds with an object of the inserted product', () => {
+        it('POST: 201 - responds with an object of the inserted product', () => {
             return request(app)
                 .post('/api/products')
                 .send({
@@ -50,6 +49,39 @@ describe('/api', () => {
                         'category'
                     )
                     expect(res.body.newProduct.foodName).to.equal('stilton')
+                })
+        })
+        it('PATCH: 200 - responds with an object of the updated product', () => {
+            return request(app)
+                .patch('/api/products')
+                .send({
+                    foodName: 'strawberries',
+                    category: '5eaafb9f90b70d7c8f6b47ac',
+                })
+                .expect(200)
+                .then((res) => {
+                    expect(res.body.updatedProduct).to.contain.keys(
+                        '_id',
+                        'foodName',
+                        'category'
+                    )
+                    expect(res.body.updatedProduct.category).to.equal(
+                        '5eaafb9f90b70d7c8f6b47ac'
+                    )
+                })
+        })
+    })
+    describe('/category', () => {
+        it('GET: 200 - responds with an array of category objects', () => {
+            return request(app)
+                .get('/api/category')
+                .expect(200)
+                .then((res) => {
+                    expect(res.body.categories[0]).to.contain.keys(
+                        'name',
+                        '_id'
+                    )
+                    expect(res.body.categories).to.be.an('array')
                 })
         })
     })
