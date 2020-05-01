@@ -69,12 +69,12 @@ const convertProductData = (result) => {
 exports.runSeed = (/* data? */) => {
     return deleteProducts()
         .then(() => deleteCategories())
-        .then(() => deleteSupermarkets())
         .then(() => insertCategories(categoryData))
-        .then(() => insertSupermarkets(supermarketData))
         .then((categories) => {
             const newProductData = convertProductData(categories)
 
             return insertProducts(newProductData)
         })
+        .then(() => deleteSupermarkets())
+        .then(() => insertSupermarkets(supermarketData))
 }

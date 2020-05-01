@@ -21,7 +21,7 @@ beforeEach(() => runSeed())
 after(() => mongoose.disconnect())
 
 describe('/api', () => {
-    it.only('status:404 when path name is invalid', () => {
+    it('status:404 when path name is invalid', () => {
         return request(app)
             .get('/api/adghdkgfhsdhg')
             .expect(404)

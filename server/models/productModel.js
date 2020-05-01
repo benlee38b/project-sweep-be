@@ -5,6 +5,7 @@ exports.findProducts = async () => {
         path: 'category',
         select: 'name',
     })
+    console.log(data)
 
     return data
 }
