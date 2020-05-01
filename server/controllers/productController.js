@@ -6,7 +6,10 @@ const {
 
 exports.getProducts = (req, res, next) => {
     findProducts()
-        .then((products) => res.status(200).send({ products }))
+        .then((products) => {
+            // console.log(products)
+            res.status(200).send({ products })
+        })
         .catch((err) => {
             console.log(err)
         })
@@ -14,7 +17,7 @@ exports.getProducts = (req, res, next) => {
 
 exports.postProduct = (req, res, next) => {
     const product = req.body
-    console.log(product)
+
     insertProduct(product)
         .then(([newProduct]) => {
             res.status(201).send({ newProduct })
