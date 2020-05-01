@@ -21,6 +21,14 @@ beforeEach(() => runSeed())
 after(() => mongoose.disconnect())
 
 describe('/api', () => {
+    it.only('status:404 when path name is invalid', () => {
+        return request(app)
+            .get('/api/adghdkgfhsdhg')
+            .expect(404)
+            .then((res) => {
+                expect(res.body.message).to.equal('404: Path Not Found')
+            })
+    })
     describe('/products', () => {
         it('GET: 200 - responds with an array of all available foods', () => {
             return request(app)
