@@ -93,4 +93,27 @@ describe('/api', () => {
                 })
         })
     })
+    describe('/supermarkets', () => {
+        it('GET: 200 - responds with an array of supermarket objects', () => {
+            return request(app)
+                .get('/api/supermarkets')
+                .expect(200)
+                .then((res) => {
+                    expect(res.body.supermarkets[0]).to.contain.keys(
+                        'name',
+                        '_id',
+                        'layout',
+                        'aisleInfo',
+                        'categoryLookup'
+                    )
+                    expect(res.body.supermarkets[0].layout).to.be.an('array')
+                    expect(res.body.supermarkets[0].aisleInfo).to.be.an(
+                        'object'
+                    )
+                    expect(res.body.supermarkets[0].categoryLookup).to.be.an(
+                        'object'
+                    )
+                })
+        })
+    })
 })
