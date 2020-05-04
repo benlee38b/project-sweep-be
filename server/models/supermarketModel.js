@@ -19,5 +19,5 @@ exports.insertSupermarket = async (newSupermarket) => {
         categoryLookup,
     })
 
-    return data
+    return data[0]
 }
