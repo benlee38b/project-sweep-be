@@ -169,5 +169,36 @@ describe('/api', () => {
                     )
                 })
         })
+        describe('/:supermarket_id', () => {
+            it('GET: 200 - responds with supermarket object', () => {
+                return request(app)
+                    .get('/api/supermarkets')
+                    .then((res) => {
+                        return request(app)
+                            .get(
+                                `/api/supermarkets/${res.body.supermarkets[0]._id}`
+                            )
+                            .expect(200)
+                            .then((res) => {
+                                expect(res.body.supermarket).to.contain.keys(
+                                    'name',
+                                    '_id',
+                                    'layout',
+                                    'aisleInfo',
+                                    'categoryLookup'
+                                )
+                                expect(res.body.supermarket.layout).to.be.an(
+                                    'array'
+                                )
+                                expect(res.body.supermarket.aisleInfo).to.be.an(
+                                    'object'
+                                )
+                                expect(
+                                    res.body.supermarket.categoryLookup
+                                ).to.be.an('object')
+                            })
+                    })
+            })
+        })
     })
 })
