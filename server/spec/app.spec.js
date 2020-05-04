@@ -23,7 +23,7 @@ after(() => mongoose.disconnect())
 describe('/api', () => {
     it('status:404 when path name is invalid', () => {
         return request(app)
-            .get('/api/adghdkgfhsdhg')
+            .get('/api/NotAPath')
             .expect(404)
             .then((res) => {
                 expect(res.body.message).to.equal('404: Path Not Found')
