@@ -115,5 +115,59 @@ describe('/api', () => {
                     )
                 })
         })
+        it('POST: 201 - responds with an object of the inserted supermarket', () => {
+            return request(app)
+                .post('/api/supermarkets')
+                .send({
+                    name: 'postRequestSupermarket',
+                    layout: [
+                        [2, 1, 9, 4, 5, 7],
+                        [6, 8, 5, 10, 17, 12],
+                        [18, 14, 15, 11, 11, 13],
+                    ],
+                    categoryLookup: {
+                        cheese: 2,
+                        'vegetarian & free from': 14,
+                        bakery: 1,
+                        'cat & kitten': 12,
+                        'vegetables & potatoes': 11,
+                        fruit: 15,
+                    },
+
+                    aisleInfo: {
+                        1: { type: 'tl', x: 0, y: 0, num: 2 },
+                        2: { type: 'tm', x: 1, y: 0, num: 1 },
+                        3: { type: 'tm', x: 2, y: 0, num: 9 },
+                        4: { type: 'tm', x: 3, y: 0, num: 4 },
+                        5: { type: 'tm', x: 4, y: 0, num: 5 },
+                        6: { type: 'tr', x: 5, y: 0, num: 6 },
+                        7: { type: 'ml', x: 0, y: 1, num: 7 },
+                        8: { type: 'mm', x: 1, y: 1, num: 8 },
+                        9: { type: 'mm', x: 2, y: 1, num: 3 },
+                        10: { type: 'mm', x: 3, y: 1, num: 10 },
+                        11: { type: 'mm', x: 4, y: 1, num: 17 },
+                        12: { type: 'mr', x: 5, y: 1, num: 12 },
+                        13: { type: 'cl', x: 0, y: 2, num: 18 },
+                        14: { type: 'cm', x: 1, y: 2, num: 14 },
+                        15: { type: 'cm', x: 2, y: 2, num: 15 },
+                        16: { type: 'cm', x: 3, y: 2, num: 16 },
+                        17: { type: 'cm', x: 4, y: 2, num: 11 },
+                        18: { type: 'cr', x: 5, y: 2, num: 13 },
+                    },
+                })
+                .expect(201)
+                .then((res) => {
+                    expect(res.body.addedSupermarket).to.contain.keys(
+                        'name',
+                        '_id',
+                        'layout',
+                        'aisleInfo',
+                        'categoryLookup'
+                    )
+                    expect(res.body.addedSupermarket.name).to.equal(
+                        'postRequestSupermarket'
+                    )
+                })
+        })
     })
 })
