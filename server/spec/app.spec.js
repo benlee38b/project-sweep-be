@@ -202,6 +202,14 @@ describe('/api', () => {
                             })
                     })
             })
+            it('status:404 when invalid supermarket id ', () => {
+                return request(app)
+                    .get('/api/supermarkets/NotASupermarketId')
+                    .expect(404)
+                    .then((res) => {
+                        expect(res.body.message).to.equal('404: Path Not Found')
+                    })
+            })
         })
     })
 })
