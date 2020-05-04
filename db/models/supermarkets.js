@@ -7,6 +7,7 @@ let SuperMarketSchema = new Schema({
         type: String,
         required: true,
     },
+    location: { type: Array, required: true },
     layout: {
         type: Array,
         required: true,

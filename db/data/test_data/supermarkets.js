@@ -1,6 +1,7 @@
 module.exports = [
     {
         name: 'supermarket1',
+        location: [53.5388816, -2.0105633],
         layout: [
             [1, 2, 3, 4, 5, 6],
             [7, 8, 9, 10, 11, 12],
@@ -59,6 +60,7 @@ module.exports = [
     },
     {
         name: 'supermarket2',
+        location: [53.5389763, -2.074399],
         layout: [
             [2, 1, 9, 4, 5, 6],
             [7, 8, 3, 10, 17, 12],

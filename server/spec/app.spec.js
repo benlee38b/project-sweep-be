@@ -102,6 +102,7 @@ describe('/api', () => {
                     expect(res.body.supermarkets[0]).to.contain.keys(
                         'name',
                         '_id',
+                        'location',
                         'layout',
                         'aisleInfo',
                         'categoryLookup'
@@ -160,6 +161,7 @@ describe('/api', () => {
                     expect(res.body.addedSupermarket).to.contain.keys(
                         'name',
                         '_id',
+                        'location',
                         'layout',
                         'aisleInfo',
                         'categoryLookup'
@@ -183,6 +185,7 @@ describe('/api', () => {
                                 expect(res.body.supermarket).to.contain.keys(
                                     'name',
                                     '_id',
+                                    'location',
                                     'layout',
                                     'aisleInfo',
                                     'categoryLookup'
