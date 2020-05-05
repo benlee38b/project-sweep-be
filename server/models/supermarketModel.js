@@ -7,7 +7,7 @@ exports.findSupermarkets = async () => {
 
 exports.findSupermarketById = async (supermarket_id) => {
     const data = await Supermarket.find({ _id: supermarket_id })
-    return data
+    return data[0]
 }
 
 exports.insertSupermarket = async (newSupermarket) => {
@@ -19,5 +19,5 @@ exports.insertSupermarket = async (newSupermarket) => {
         categoryLookup,
     })
 
-    return data
+    return data[0]
 }

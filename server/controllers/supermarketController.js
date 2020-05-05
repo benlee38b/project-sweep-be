@@ -3,6 +3,7 @@ const {
     findSupermarketById,
     insertSupermarket,
 } = require('../models/supermarketModel')
+const { customErrors } = require('../errorHandling/errors')
 
 exports.getSupermarkets = (req, res, next) => {
     findSupermarkets()
@@ -20,9 +21,9 @@ exports.getSupermarketById = (req, res, next) => {
         .then((supermarket) => {
             res.status(200).send({ supermarket })
         })
-        .catch((err) => {
-            console.log(err)
-        })
+        .catch((err) =>
+            res.status(404).send({ message: '404: Supermarket Not Found' })
+        )
 }
 
 exports.postSupermarket = (req, res, next) => {
