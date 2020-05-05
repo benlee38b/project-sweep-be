@@ -207,7 +207,9 @@ describe('/api', () => {
                     .get('/api/supermarkets/NotASupermarketId')
                     .expect(404)
                     .then((res) => {
-                        expect(res.body.message).to.equal('404: Path Not Found')
+                        expect(res.body.message).to.equal(
+                            '404: Supermarket Not Found'
+                        )
                     })
             })
         })
