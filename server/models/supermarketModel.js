@@ -14,6 +14,7 @@ exports.insertSupermarket = async (newSupermarket) => {
     const { name, layout, aisleInfo, categoryLookup } = newSupermarket
     const data = await Supermarket.insertMany({
         name,
+        location,
         layout,
         aisleInfo,
         categoryLookup,
