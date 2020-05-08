@@ -6,7 +6,7 @@ const router = express.Router()
 const { customErrors } = require('./errorHandling/errors')
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
-
+res.setHeader('Access-Control-Allow-Origin', '*')
 app.use(express.json())
 const cors = require('cors')
 app.use(cors())
