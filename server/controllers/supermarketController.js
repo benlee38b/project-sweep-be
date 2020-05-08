@@ -19,6 +19,7 @@ exports.getSupermarketById = (req, res, next) => {
     const { supermarket_id } = req.params
     findSupermarketById(supermarket_id)
         .then((supermarket) => {
+            res.setHeader('Access-Control-Allow-Origin', '*')
             res.status(200).send({ supermarket })
         })
         .catch((err) =>
