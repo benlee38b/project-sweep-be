@@ -31,6 +31,7 @@ exports.postSupermarket = (req, res, next) => {
     const newSupermarket = req.body
     insertSupermarket(newSupermarket)
         .then((addedSupermarket) => {
+            res.setHeader('Access-Control-Allow-Origin', '*')
             res.status(201).send({ addedSupermarket })
         })
         .catch((err) => {
