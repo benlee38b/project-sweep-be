@@ -16,7 +16,6 @@ module.exports = [
         category: 'pizza, pasta & garlic bread',
     },
     { foodName: 'pork pies', category: 'party food, pies, salads & dips' },
-    { foodName: 'peperami', category: 'snacks & drinks' },
     { foodName: 'crunchy nut corn flakes', category: 'cereals & cereal bars' },
     {
         foodName: 'super noodles chicken flavour',
