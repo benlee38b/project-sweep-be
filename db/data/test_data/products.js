@@ -15,7 +15,10 @@ module.exports = [
     { foodName: 'strawberry yogurts', category: 'yogurts & desserts' },
     { foodName: 'carrot & coriander soup', category: 'ready meals & soup' },
     { foodName: 'bin bags', category: 'household' },
-    { foodName: 'toilet roll', category: 'toiletries' },
+    {
+        foodName: 'toilet roll',
+        category: 'toilet roll, kitchen roll & tissues',
+    },
     {
         foodName: 'garlic & herb baguette',
         category: 'pizza, pasta & garlic bread',
@@ -55,7 +58,6 @@ module.exports = [
         foodName: 'pringles original flavour crisps',
         category: 'crisps, nuts & snacks',
     },
-    { foodName: 'sauerkraut', category: 'world foods' },
 
     { foodName: 'frozen peas', category: 'vegetables & yorkshire puddings' },
 
