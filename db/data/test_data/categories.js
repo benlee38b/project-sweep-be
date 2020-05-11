@@ -57,4 +57,6 @@ module.exports = [
     { name: 'garden & outdoor' },
     { name: 'kitchen' },
     { name: 'bed, bath & home' },
+    { name: 'crafting' },
+    { name: 'frozen food' },
 ]
