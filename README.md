@@ -21,6 +21,8 @@ Git push heroku [branch you are using]:master
 
 LIVE PATHS
 
+GET: https://aisleonator.herokuapp.com/api/
+
 GET: https://aisleonator.herokuapp.com/api/products/
 POST: https://aisleonator.herokuapp.com/api/products/
 PATCH: https://aisleonator.herokuapp.com/api/products/
