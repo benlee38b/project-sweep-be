@@ -2,7 +2,7 @@
 
 SUMMARY
 
-This repo is the backend for our aisle navigator project. An app desined to help people with there shopping by letting them enter their shopping list, select their desired supermarket and then provides them with the most efficient path to go around the supermarket to do their shopping.
+This repo is the backend for our aisle navigator project. An app designed to help people with their shopping by letting them enter their shopping list, select their desired supermarket and then provides them with the most efficient path to go around the supermarket to do their shopping.
 
 HOSTING
 
